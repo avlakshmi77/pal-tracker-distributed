@@ -4,9 +4,12 @@ applications:
   instances: 1
   memory: 256M
   routes:
-  - route: timesheets-pal-INITIALS.apps.pikes.pal.pivotal.io
+  - route: timesheets-pal-pal-lakshmi.cfapps.io
   path: Applications/TimesheetsServer/bin/Release/netcoreapp2.2/publish
+  buildpacks:
+    - https://github.com/cloudfoundry/dotnet-core-buildpack/releases/download/v2.3.2/dotnet-core-buildpack-cflinuxfs3-v2.3.2.zip
+
   env:
-    REGISTRATION_SERVER_ENDPOINT: http://FILL_ME_IN/
+    REGISTRATION_SERVER_ENDPOINT: http://registration-pal-pal-lakshmi.cfapps.io/
   services:
   - tracker-timesheets-database

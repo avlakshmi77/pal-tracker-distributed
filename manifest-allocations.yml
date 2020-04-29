@@ -4,8 +4,11 @@ applications:
   instances: 1
   memory: 256M
   routes:
-  - route: allocations-pal-INITIALS.apps.pikes.pal.pivotal.io
+  - route: allocations-pal-lakshmi.cfapps.io
   path: Applications/AllocationsServer/bin/Release/netcoreapp2.2/publish
+  buildpacks:
+    - https://github.com/cloudfoundry/dotnet-core-buildpack/releases/download/v2.3.2/dotnet-core-buildpack-cflinuxfs3-v2.3.2.zip
+
   env:
     REGISTRATION_SERVER_ENDPOINT: http://FILL_ME_IN/
   services:
