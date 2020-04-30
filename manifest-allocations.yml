@@ -9,7 +9,8 @@ applications:
   buildpacks:
     - https://github.com/cloudfoundry/dotnet-core-buildpack/releases/download/v2.3.2/dotnet-core-buildpack-cflinuxfs3-v2.3.2.zip
 
-  env:
-    REGISTRATION_SERVER_ENDPOINT: http://FILL_ME_IN/
+ # env:
+  #  REGISTRATION_SERVER_ENDPOINT: http://registration-pal-pal-lakshmi.cfapps.io/
   services:
   - tracker-allocations-database
+  - tracker-service-registry

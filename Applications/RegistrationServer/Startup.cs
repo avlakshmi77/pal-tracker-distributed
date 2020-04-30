@@ -7,6 +7,7 @@ using Microsoft.Extensions.Logging;
 using Projects;
 using Steeltoe.CloudFoundry.Connector.MySql.EFCore;
 using Users;
+using Steeltoe.Discovery.Client;
 
 namespace RegistrationServer
 {
@@ -34,7 +35,7 @@ namespace RegistrationServer
             services.AddDbContext<AccountContext>(options => options.UseMySql(Configuration));
             services.AddDbContext<ProjectContext>(options => options.UseMySql(Configuration));
             services.AddDbContext<UserContext>(options => options.UseMySql(Configuration));
-
+            services.AddDiscoveryClient(Configuration);
             services.AddScoped<IAccountDataGateway, AccountDataGateway>();
             services.AddScoped<IProjectDataGateway, ProjectDataGateway>();
             services.AddScoped<IUserDataGateway, UserDataGateway>();
@@ -45,6 +46,7 @@ namespace RegistrationServer
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             app.UseMvc();
+            app.UseDiscoveryClient();
         }
     }
 }
